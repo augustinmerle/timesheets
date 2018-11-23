@@ -4,8 +4,61 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c24a964f256be2977eef2faea1dc33a0",
+    "content-hash": "2e67eb03d5d4814558a568963e41d559",
     "packages": [
+        {
+            "name": "azuyalabs/yasumi",
+            "version": "1.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/azuyalabs/yasumi.git",
+                "reference": "115a3ccd53f45294d3d5f16ca85137cc9826953b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/azuyalabs/yasumi/zipball/115a3ccd53f45294d3d5f16ca85137cc9826953b",
+                "reference": "115a3ccd53f45294d3d5f16ca85137cc9826953b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.6",
+                "fzaninotto/faker": "~1.7",
+                "mikey179/vfsstream": "~1.6",
+                "phpunit/phpunit": "~5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Yasumi\\": "src/Yasumi/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sacha Telgenhof",
+                    "email": "me@sachatelgenhof.nl"
+                }
+            ],
+            "description": "Yasumi is an easy PHP Library for calculating national holidays.",
+            "keywords": [
+                "Bank",
+                "calculation",
+                "calendar",
+                "celebration",
+                "date",
+                "holiday",
+                "holidays",
+                "national",
+                "time"
+            ],
+            "time": "2018-02-21T05:23:52+00:00"
+        },
         {
             "name": "doctrine/annotations",
             "version": "v1.6.0",
@@ -1280,6 +1333,63 @@
                 "rest"
             ],
             "time": "2016-10-17T18:31:11+00:00"
+        },
+        {
+            "name": "florianv/business",
+            "version": "v1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/florianv/business.git",
+                "reference": "c48ff909bda95f02adda951da18e18118c29aa73"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/florianv/business/zipball/c48ff909bda95f02adda951da18e18118c29aa73",
+                "reference": "c48ff909bda95f02adda951da18e18118c29aa73",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "jeremeamia/superclosure": "^2.1",
+                "phpunit/phpunit": "^4.6"
+            },
+            "suggest": {
+                "jeremeamia/superclosure": "Allows to serialize special days"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Business\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florian Voutzinos",
+                    "email": "florian@voutzinos.com",
+                    "homepage": "http://florian.voutzinos.com"
+                }
+            ],
+            "description": "DateTime calculations in business hours",
+            "homepage": "https://github.com/florianv/business",
+            "keywords": [
+                "business",
+                "date",
+                "hour",
+                "schedule",
+                "time"
+            ],
+            "time": "2016-02-12T12:53:27+00:00"
         },
         {
             "name": "jdorn/sql-formatter",
