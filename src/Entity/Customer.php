@@ -31,7 +31,7 @@ class Customer
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $refaral;
+    private $referal;
 
     public function __construct()
     {
@@ -86,14 +86,14 @@ class Customer
         return $this;
     }
 
-    public function getRefaral(): ?string
+    public function getReferal(): ?string
     {
-        return $this->refaral;
+        return $this->referal;
     }
 
-    public function setRefaral(?string $refaral): self
+    public function setReferal(?string $referal): self
     {
-        $this->refaral = $refaral;
+        $this->referal = $referal;
 
         return $this;
     }
