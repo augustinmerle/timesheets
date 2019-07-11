@@ -3,13 +3,14 @@
 {% block title %}Contract index{% endblock %}
 
 {% block body %}
-    <h1>Contract index</h1>
+    <h1>Liste des contrats </h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Rate</th>
+                <th>Client</th>
+                <th>TJM</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -17,7 +18,8 @@
         {% for contract in contracts %}
             <tr>
                 <td>{{ contract.id }}</td>
-                <td>{{ contract.rate }}</td>
+                <td>{{ contract.customer }}</td>
+                <td>{{ contract.rate }} €</td>
                 <td>
                     <a href="{{ path('contract_show', {'id': contract.id}) }}">show</a>
                     <a href="{{ path('contract_edit', {'id': contract.id}) }}">edit</a>

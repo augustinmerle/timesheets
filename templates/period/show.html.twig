@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Period{% endblock %}
+
+{% block body %}
+    <h1>Period</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ period.id }}</td>
+            </tr>
+            <tr>
+                <th>DateStart</th>
+                <td>{{ period.dateStart ? period.dateStart|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateEnd</th>
+                <td>{{ period.dateEnd ? period.dateEnd|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>WorkedDay</th>
+                <td>{{ period.workedDay }}</td>
+            </tr>
+            <tr>
+                <th>PeriodExpense</th>
+                <td>{{ period.periodExpense }}</td>
+            </tr>
+            <tr>
+                <th>PeriodSalary</th>
+                <td>{{ period.periodSalary }}</td>
+            </tr>
+            <tr>
+                <th>PeriodchargePayload</th>
+                <td>{{ period.periodchargePayload }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('period_index') }}">back to list</a>
+
+    <a href="{{ path('period_edit', {'id': period.id}) }}">edit</a>
+
+    {{ include('period/_delete_form.html.twig') }}
+{% endblock %}

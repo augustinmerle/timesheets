@@ -44,6 +44,11 @@ class Contract
         $this->periods = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->getCustomer()->getName();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

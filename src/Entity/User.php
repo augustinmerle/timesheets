@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoder;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -25,7 +26,7 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="array")
      */
     private $roles = [];
 
@@ -40,9 +41,31 @@ class User implements UserInterface
      */
     private $contracts;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $FirstName;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $Name;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Period", mappedBy="user")
+     */
+    private $periods;
+
     public function __construct()
     {
         $this->contracts = new ArrayCollection();
+        $this->periods = new ArrayCollection();
+
+    }
+
+    public function __toString()
+    {
+        return $this->getFirstName().' '.$this->getName();
     }
 
     public function getId(): ?int
@@ -152,5 +175,78 @@ class User implements UserInterface
         }
 
         return $this;
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->FirstName;
+    }
+
+    public function setFirstName(string $FirstName): self
+    {
+        $this->FirstName = $FirstName;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->Name;
+    }
+
+    public function setName(?string $Name): self
+    {
+        $this->Name = $Name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Period[]
+     */
+    public function getPeriods(): Collection
+    {
+        return $this->periods;
+    }
+
+    public function addPeriod(Period $period): self
+    {
+        if (!$this->periods->contains($period)) {
+            $this->periods[] = $period;
+            $period->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePeriod(Period $period): self
+    {
+        if ($this->periods->contains($period)) {
+            $this->periods->removeElement($period);
+            // set the owning side to null (unless already changed)
+            if ($period->getUser() === $this) {
+                $period->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getBalance()
+    {
+        $amount = 0;
+
+        /**
+         *  $period Period
+         */
+        foreach ($this->getPeriods() as $period)
+        {
+
+            $amount += $period->getContract()->getRate()*$period->getWorkedDay()
+                - $period->getPeriodExpense()
+                - $period->getPeriodchargePayload()
+                - $period->getPeriodSalary();
+        }
+        return $amount;
     }
 }
